@@ -13,7 +13,7 @@ class Choice {
 const List<Choice> choices = const <Choice>[
   //const Choice(title: 'Eliminar activos', icon: Icon(Icons.delete_forever,color:Colors.black)),
   //const Choice(title: 'Configuración', icon: Icon(Icons.settings,color: Colors.black,)),
-  const Choice(title: 'Cerrar sesión', icon: Icon(Icons.undo,color:Colors.black)),
+  const Choice(title: 'Log out', icon: Icon(Icons.undo,color:Colors.black)),
 ];
 
 

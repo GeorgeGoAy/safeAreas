@@ -199,12 +199,12 @@ class _LoginPageState extends State<LoginPage> {
             navigator.directHomeEmployee(context,auth);
           }
         }else{
-          alert.openAlertBox(context, "Unauthorized", "Verifica tus credenciales y vuelve a intentarlo.");
+          alert.openAlertBox(context, "Unauthorized", "Please verify your credentials and try again");
         }
         setState(() {onSubmitedAuth = false;});
       });
     }else{
-      alert.information(context, "Catch Error", "¡Faltan campos requeridos!");
+      alert.information(context, "Catch Error", "¡Missing required fields!");
     }
   }
 

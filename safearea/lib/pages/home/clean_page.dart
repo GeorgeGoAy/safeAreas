@@ -224,7 +224,7 @@ class _CleanPageState extends State<CleanPage> {
 
   _selectPopMenu(Choice choice) {
     switch (choice.title) {
-      case 'Cerrar sesión':
+      case 'Log out':
       //areasBloc.dispose();
         cache.deleteCache();
         DBProvider.db.signOut(context);
@@ -250,7 +250,7 @@ class _CleanPageState extends State<CleanPage> {
     var result = await BarcodeScanner.scan();
     switch (result.type.toString()) {
       case 'Cancelled':
-        toast.show("Escanneo cancelado");
+        toast.show("Scan canceled");
         break;
       case 'Barcode':
       if(result.rawContent.contains("id") && result.rawContent.contains("type") && result.rawContent.contains("area")){
@@ -259,19 +259,19 @@ class _CleanPageState extends State<CleanPage> {
         int statusCode = await ObjectsService.objectsService.postObjects(scan["id"], scan["area"]);
         if(statusCode == 200){
             Navigator.pop(context,false);
-            toast.show("Objeto registrado");
+            toast.show("Registered object");
             areasBloc.getSafeAreas(user.record);
         }else{
             Navigator.pop(context,false);
-            toast.show("Error al registrar ingreso");
+            toast.show("Error registering cleaning");
         }
       }else{
-        toast.show("without results");
+        toast.show("Without results");
       }
         //preparePost(result.rawContent);
       break;
       case 'Failed':
-      toast.show("Escanneo fallido");
+      toast.show("Scan failed");
       break;
     }
   }

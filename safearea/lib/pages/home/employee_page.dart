@@ -214,7 +214,7 @@ int countNotifications;
             );
           },
     lastDate: DateTime(2025),
-    cancelText: "Cancelar",
+    cancelText: "Cancel",
     confirmText: "Ok",
   );
   if (picked != null && picked != selectedDate){
@@ -230,7 +230,7 @@ int countNotifications;
 
   _selectPopMenu(Choice choice) {
     switch (choice.title) {
-      case 'Cerrar sesión':
+      case 'Log out':
       //areasBloc.dispose();
         cache.deleteCache();
         DBProvider.db.signOut(context);
@@ -250,7 +250,7 @@ int countNotifications;
     var result = await BarcodeScanner.scan();
     switch (result.type.toString()) {
       case 'Cancelled':
-        toast.show("Escanneo cancelado");
+        toast.show("Scan canceled");
         break;
       case 'Barcode':
         if(result.rawContent.contains("id") && result.rawContent.contains("type")){
@@ -261,23 +261,23 @@ int countNotifications;
             if(statusCode == 200){
                 await logsBloc.getLogs(user.record, "${selectedDate.day}-${selectedDate.month}-${selectedDate.year}");
                 Navigator.pop(context,false);
-                toast.show("Ingreso registrado");
+                toast.show("Registered login");
             }else{
                 Navigator.pop(context,false);
-                toast.show("Error al registrar ingreso");
+                toast.show("Error when registering login");
             }
           }else{
             toast.show(scan.toString());
           }
         }else{
-          toast.show("without results");
+          toast.show("Without results");
         }
       
         //preparePost(result.rawContent);
         
         break;
       case 'Failed':
-        toast.show("Escanneo fallido");
+        toast.show("Scan failed");
         break;
     }
   }
