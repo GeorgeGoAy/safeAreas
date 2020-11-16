@@ -1,0 +1,2 @@
+# safeAreas
+flutter pub get
